@@ -1,0 +1,94 @@
+<!-- 
+    Class: SWE2710- Wordle Project
+    Names: Ethan Houseworth, Kadie Degner, Alton Wimer, and Ryan Malvey
+    Class Section: 121
+    Fall 2023
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wordle</title>
+    <link rel="stylesheet" href="WordleMenu.css">
+    <script type="module" src="wordleMenu.js"></script>
+</head>
+<body>
+
+    <!-- How to play popup menu -->
+    <div id="howToPlayContainer">
+        <form id="howToPlayForm">
+            <h1>How To Play</h1>
+            <h2>Guess the word in 6 tries.</h2>
+            <ul>
+                <li>Each guess must be a valid 5-letter word.</li>
+                <li>The color of the tiles will change to show how close your
+                    guess was to the word.</li>
+            </ul>
+            <h2>Examples</h2>
+
+            <table>
+                <caption>
+                <p><span class="bold">O</span> is in the word and in the correct spot.</p>    
+                </caption>
+                <tr>
+                    <th id="green" class="animate">O</th>
+                    <th>C</th>
+                    <th>E</th>
+                    <th>A</th>
+                    <th>N</th>
+                </tr>
+            </table>
+
+            <table>
+                <caption>
+                    <p><span class="bold">C</span> is in the word but not in the correct spot.</p>    
+                    </caption>
+                <tr>
+                    <th>B</th>
+                    <th>E</th>
+                    <th>A</th>
+                    <th id="yellow" class="animate">C</th>
+                    <th>H</th>
+                </tr>
+            </table>
+
+            <table>
+                <caption>
+                    <p><span class="bold">A</span> is not in the word.</p>    
+                    </caption>
+                <tr>
+                    <th>E</th>
+                    <th id="black" class="animate">A</th>
+                    <th>R</th>
+                    <th>T</th>
+                    <th>H</th>
+                </tr>
+            </table>
+
+            <button id="closeButton">x</button>
+        </form>
+    </div>
+
+    <!-- Title -->
+    <h1>Wordle</h1>
+
+    <!-- Game modes selector -->
+    <div id="gameModesContainer">
+        <label for="modes">Game Mode:</label>
+        <select name="gameMode" id="modesSelector">
+            <option value="classic">Classic</option>
+            <option value="rocketleagule">Rocket Leagule</option>
+            <option value="other2">option3</option>
+            <option value="other3">option4</option>
+        </select>
+    </div>
+
+    <!-- Menu buttons -->
+    <div id="buttonsContainer">
+        <button id="howToPlayButton" class="menuButtons">How to Play</button>
+        <button id="statisticsButton" class="menuButtons" onclick = "window.location.href = '../Wordle Statistics/statistics.html'">Statistics</button>
+        <button id="playButton" class="menuButtons" onclick = "window.location.href = '../Wordle Game/WordleGame.html?selectedOption=' + document.getElementById('modesSelector').value;">Play</button>
+    </div>
+</body>
+</html>
