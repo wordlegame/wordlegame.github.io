@@ -1,0 +1,78 @@
+/*
+    Class: SWE2710- Wordle Project
+    Names: Ethan Houseworth, Kadie Degner, Alton Wimer, and Ryan Malvey
+    Class Section: 121
+    Fall 2023
+*/
+
+/* Body and title styles */
+
+body {
+    background-color: white;
+}
+
+#wordle {
+    text-align: center;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-size: 100px; 
+    line-height: 20px; 
+    color: black;
+    cursor: default;
+}
+
+#modeTitle {
+    text-align: center;
+    font-size: 70px;  
+    line-height: 20px;
+    padding-top: 120px; 
+    cursor: default;
+}
+
+/* Game mode selector and option styles */
+    
+#modesSelector {
+    height: 40px;
+    width: 150px;
+    font-size: 20px;
+    border-radius: 10px;
+    font-family: "Franklin Gothic Book", sans-serif;
+}
+    
+#gameModesContainer {
+    text-align: center;
+    font-family: "Franklin Gothic Book", sans-serif;
+    font-size: 30px;
+    height: 40px;
+    margin: auto;
+    padding: 0px 30px 30px 30px;
+}
+    
+option {
+    font-size: 20px;
+}
+
+
+/* Menu buttons and menu buttons container styles */
+    
+#buttonsContainer {
+    text-align: center;
+}
+    
+.menuButtons {
+    margin: 10px;
+    width: 150px;
+    height: 50px;
+    font-family: "Franklin Gothic Book", sans-serif;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.menuButtons:hover {
+    background-color: rgba(10, 10, 10, 0.95);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    transform: translateY(-4px);
+}

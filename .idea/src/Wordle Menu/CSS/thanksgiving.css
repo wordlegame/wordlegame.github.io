@@ -1,0 +1,57 @@
+/*
+    Class: SWE2710- Wordle Project
+    Names: Ethan Houseworth, Kadie Degner, Alton Wimer, and Ryan Malvey
+    Class Section: 121
+    Fall 2023
+*/
+
+/* Body and title styles */
+
+body {
+    background: url('../Images/thanksgivingBackground.png') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+
+#wordle {
+    color: #3a2a21;
+}
+
+#modeTitle {
+    font-family: "Bodoni MT Condensed", sans-serif;
+    font-size: 70px;  
+    line-height: 20px;
+    padding-top: 100px;
+    color: #ffa639;
+}
+
+/* Menu buttons styles */
+      
+.menuButtons {
+    color: #ef9c38;
+}
+
+.menuButtons:hover {
+    background-color: #ffa639;
+}
+
+/* Leaf Fall Animation */
+
+@keyframes leafFall {
+    0% {
+        transform: translate(var(--original-x), -15vh) scale(var(--scale)) rotate(var(--rotation-start));
+    }
+    100% {
+        transform: translate(var(--final-x), 100vh) scale(var(--scale)) rotate(var(--rotation-end));
+    }    
+}
+
+/* Leaf */
+
+.leaf {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    pointer-events: none;
+    animation: leafFall var(--fall-time) var(--time-delay) linear infinite;
+}

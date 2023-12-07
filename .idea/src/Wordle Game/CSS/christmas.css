@@ -1,0 +1,73 @@
+/*
+    Class: SWE2710- Wordle Project
+    Names: Ethan Houseworth, Kadie Degner, Alton Wimer, and Ryan Malvey
+    Class Section: 121
+    Fall 2023
+*/
+
+/* New keyboard color */
+.key {
+    border: solid #e33d32 3px;
+    background-color: #e33d32;
+    color: white;
+    transition: none;
+}
+
+#reindeer {
+    position: fixed;
+    z-index: -1;
+    width: 265px;
+    height: 350px;
+    bottom: 0px;
+    left: 103.5px;
+}
+
+/* Top right lights */
+#lights {
+    position: fixed;
+    z-index: -1;
+    width: 280px;
+    height: 250px;
+    top: 0;
+    right: 0;   
+}
+
+/* Top left lights */
+#lights2 {
+    position: fixed;
+    z-index: -1;
+    width: 360px;
+    height: 250px;
+    top: -10px;
+    left: 0;   
+}
+
+#santa {
+    position: fixed;
+    z-index: -1;
+    width: 250px;
+    height: 350px;
+    bottom: 0;
+    right: 10vh;    
+}
+
+#nose {
+    width: 39px;
+    height: 28px;
+    background: #2c1911;
+    position: fixed;
+    border-radius: 50%;  
+    left: 219px; 
+    bottom: 145px; 
+    animation: flash 3s infinite;
+    z-index: -1;
+}
+
+@keyframes flash {
+    10%, 88% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}

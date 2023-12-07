@@ -1,0 +1,330 @@
+<!-- 
+    Class: SWE2710- Wordle Project
+    Names: Ethan Houseworth, Kadie Degner, Alton Wimer, and Ryan Malvey
+    Class Section: 121
+    Fall 2023
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wordle</title>
+
+    <!-- Wordle Favicon -->
+    <link rel="icon" type="image/x-icon" href="./Images/wordleLogo.png">
+
+    <!-- Main Stylesheet -->
+    <link rel="wordle game stylesheet" href="./CSS/wordleGameStylesheet.css" id="link">
+
+    <!-- Current Stylesheet -->
+    <div id="currentGameStylesheet"></div>
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/e2eef047eb.js" crossorigin="anonymous"></script>
+
+    <!-- Game Functions JavaScript -->
+    <script src="loadWordList.js"></script>
+    <script src="gameLogicHandler.js"></script>
+    <script src="colorLetters.js"></script>
+    <script src="gameEnd.js"></script>
+    <script src="statisticsData.js"></script>
+    <script src="hintLogic.js"></script>
+    <script src="timer.js"></script>
+    <script type = "module" src="wordleGameScript.js"></script>
+
+    <!-- Game Mode JavaScript -->
+    <script src="./Game Mode JS/halloween.js"></script>
+    <script src="./Game Mode JS/christmas.js"></script>
+    <script src="./Game Mode JS/thanksgiving.js"></script>
+</head>
+<body>
+    <!-- Div to append styles to the top of the document -->
+    <div id="appendToTop"></div>
+
+    <div id="nav">
+        <i class="fa-solid fa-house navIcon" onclick = "window.location.href = '../Wordle Menu/wordleMenu.html'"></i>
+        <i class="fa-solid fa-question navIcon" id="helpMenu"></i>
+        <h1 id="title">Wordle</h1>
+        <div id="timer">
+            <p id="timerText">00:00</p>
+            <button id="hintButton">Hint</button>
+        </div>
+    </div>
+
+    <!-- How to play popup menu -->
+    <div id="howToPlayContainer">
+        <h1>How To Play</h1>
+        <h2>Guess the word in 6 tries.</h2>
+        <ul>
+            <li>Each guess must be a valid 5-letter word.</li>
+            <li>The color of the tiles will change to show how close your
+                guess was to the word.</li>
+        </ul>
+        <h2>Examples</h2>
+
+        <table>
+            <caption>
+            <p><span class="bold">O</span> is in the word and in the correct spot.</p>    
+            </caption>
+            <tr>
+                <th class="animate green">O</th>
+                <th>C</th>
+                <th>E</th>
+                <th>A</th>
+                <th>N</th>
+            </tr>
+        </table>
+
+        <table>
+            <caption>
+                <p><span class="bold">C</span> is in the word but not in the correct spot.</p>    
+                </caption>
+            <tr>
+                <th>B</th>
+                <th>E</th>
+                <th>A</th>
+                <th class="animate yellow">C</th>
+                <th>H</th>
+            </tr>
+        </table>
+
+        <table>
+            <caption>
+                <p><span class="bold">A</span> is not in the word.</p>    
+                </caption>
+            <tr>
+                <th>E</th>
+                <th class="animate gray">A</th>
+                <th>R</th>
+                <th>T</th>
+                <th>H</th>
+            </tr>
+        </table>
+
+        <button id="closeButton">x</button>
+    </div>
+
+    <!-- Hint Popup -->
+    <div id="hintContainer">
+        <button id="closeHintButton">x</button>
+        <h2>Possible Words:</h2>
+        <ul id="hintList"></ul>
+    </div>
+    
+    <!-- Word Grid -->
+    <div class="grid-container">
+        <div class="grid-item" id="01"></div>
+        <div class="grid-item" id="02"></div>
+        <div class="grid-item" id="03"></div>
+        <div class="grid-item" id="04"></div>
+        <div class="grid-item" id="05"></div>
+        <div class="grid-item" id="11"></div>
+        <div class="grid-item" id="12"></div>
+        <div class="grid-item" id="13"></div>
+        <div class="grid-item" id="14"></div>
+        <div class="grid-item" id="15"></div>
+        <div class="grid-item" id="21"></div>
+        <div class="grid-item" id="22"></div>
+        <div class="grid-item" id="23"></div>
+        <div class="grid-item" id="24"></div>
+        <div class="grid-item" id="25"></div>
+        <div class="grid-item" id="31"></div>
+        <div class="grid-item" id="32"></div>
+        <div class="grid-item" id="33"></div>
+        <div class="grid-item" id="34"></div>
+        <div class="grid-item" id="35"></div>
+        <div class="grid-item" id="41"></div>
+        <div class="grid-item" id="42"></div>
+        <div class="grid-item" id="43"></div>
+        <div class="grid-item" id="44"></div>
+        <div class="grid-item" id="45"></div>
+        <div class="grid-item" id="51"></div>
+        <div class="grid-item" id="52"></div>
+        <div class="grid-item" id="53"></div>
+        <div class="grid-item" id="54"></div>
+        <div class="grid-item" id="55"></div>
+      </div>
+
+      <!-- Keyboard -->
+      <div id="keyboardDiv">
+        <table class="keyTable">
+            <tr id="row1">
+                <td class="key" id="q">Q</td>
+                <td class="key" id="w">W</td>
+                <td class="key" id="e">E</td>
+                <td class="key" id="r">R</td>
+                <td class="key" id="t">T</td>
+                <td class="key" id="y">Y</td>
+                <td class="key" id="u">U</td>
+                <td class="key" id="i">I</td>
+                <td class="key" id="o">O</td>
+                <td class="key" id="p">P</td>
+            </tr>
+        </table>
+    
+        <table class="keyTable">
+            <tr id="row2">
+                <td class="key" id="a">A</td>
+                <td class="key" id="s">S</td>
+                <td class="key" id="d">D</td>
+                <td class="key" id="f">F</td>
+                <td class="key" id="g">G</td>
+                <td class="key" id="h">H</td>
+                <td class="key" id="j">J</td>
+                <td class="key" id="k">K</td>
+                <td class="key" id="l">L</td>
+            </tr>
+        </table>
+    
+        <table class="keyTable">
+            <tr id="row3">
+                <td class="key" id="Backspace">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" id="backspaceIcon" class="bi bi-backspace" viewBox="0 0 16 16">
+                        <path d="M5.83 5.146a.5.5 0 0 0 0 .708L7.975 8l-2.147 2.146a.5.5 0 0 0 .707.708l2.147-2.147 2.146 2.147a.5.5 0 0 0 .707-.708L9.39 8l2.146-2.146a.5.5 0 0 0-.707-.708L8.683 7.293 6.536 5.146a.5.5 0 0 0-.707 0z"/>
+                        <path d="M13.683 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-7.08a2 2 0 0 1-1.519-.698L.241 8.65a1 1 0 0 1 0-1.302L5.084 1.7A2 2 0 0 1 6.603 1h7.08zm-7.08 1a1 1 0 0 0-.76.35L1 8l4.844 5.65a1 1 0 0 0 .759.35h7.08a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-7.08z"/>
+                    </svg>
+                </td>
+                <td class="key" id="z">Z</td>
+                <td class="key" id="x">X</td>
+                <td class="key" id="c">C</td>
+                <td class="key" id="v">V</td>
+                <td class="key" id="b">B</td>
+                <td class="key" id="n">N</td>
+                <td class="key" id="m">M</td>
+                <td class="key" id="Enter">ENTER</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- End of Game Menu -->
+    <div id="endMenu">
+        <h1 id="gameResult">Temp</h1>
+        <button type='button' id="endMenuClose">x</button>
+        <table>
+            <tr id="corrrectWord">
+                <th id="l1" class="correctWordLetter"></th>
+                <th id="l2" class="correctWordLetter"></th>
+                <th id="l3" class="correctWordLetter"></th>
+                <th id="l4" class="correctWordLetter"></th>
+                <th id="l5" class="correctWordLetter"></th>
+            </tr>
+        </table>
+
+        <br><table>
+            <tr>
+                <th id="guessDistribution" colspan="2">Guess Distribution</th>
+            </tr>
+            <tr>
+                <td>
+                    <label for="1Guesses">1</label>
+                </td>
+                <td>
+                    <progress id="1Guesses"></progress>
+                </td>
+                <td>
+                    <p id="1GuessesText"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="2Guesses">2</label>
+                </td>
+                <td>
+                    <progress id="2Guesses"></progress>
+                </td>
+                <td>
+                    <p id="2GuessesText"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="3Guesses">3</label>
+                </td>
+                <td>
+                    <progress id="3Guesses"></progress>
+                </td>
+                <td>
+                    <p id="3GuessesText"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="4Guesses">4</label>
+                </td>
+                <td>
+                    <progress id="4Guesses"></progress>
+                </td>
+                <td>
+                    <p id="4GuessesText"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="5Guesses">5</label>
+                </td>
+                <td>
+                    <progress id="5Guesses"></progress>
+                </td>
+                <td>
+                    <p id="5GuessesText"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="6Guesses">6</label>
+                </td>
+                <td>
+                    
+                    <progress id="6Guesses"></progress>
+                </td>
+                <td>
+                    <p id="6GuessesText"></p>
+                </td>
+            </tr>
+        </table>
+
+        <div>
+            <button id="backToMenu" class="endGameButton" onclick = "window.location.href = '../Wordle Menu/wordleMenu.html'">Back to Menu</button>
+            <button id="playAgain" class="endGameButton">Play Again</button>
+        </div>
+        
+    </div>
+
+    <!--Timer form-->
+    <div id="timerSelection">
+        <div id="timerSelectionDiv">
+            <h1>Select Your Mode</h1>
+            <table id="timerTable">
+                <tr>
+                    <td>
+                        <button id="easy" class="menuButtons">Easy</button>
+                    </td>
+                    <td>
+                        <button id="medium" class="menuButtons">Medium</button>
+                    </td>
+                    <td>
+                        <button id="hard" class="menuButtons">Hard</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        5 minute(s)
+                    </td>
+                    <td>
+                        3 minute(s)
+                    </td>
+                    <td>
+                        1 minute(s)
+                    </td>
+                </tr>
+            </table>
+            <h2>Or Add Custom Time</h2>
+            <form onsubmit="return false">
+                <input type="number" value="5" min="1" max="60" required id="customTimeInput"><br>
+                <input type="submit" class="menuButtons" id="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
