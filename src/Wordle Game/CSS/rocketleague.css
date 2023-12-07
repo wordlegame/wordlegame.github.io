@@ -1,0 +1,16 @@
+/*
+    Class: SWE2710- Wordle Project
+    Names: Ethan Houseworth, Kadie Degner, Alton Wimer, and Ryan Malvey
+    Class Section: 121
+    Fall 2023
+*/
+
+body {
+    background: url('../Images/rocketLeagueGameBackground.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+#nav {
+    color: white;
+    -webkit-text-stroke: rgb(0, 0, 0) 0.5px;
+}

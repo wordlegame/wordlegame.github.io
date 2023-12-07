@@ -1,0 +1,480 @@
+/*
+    Class: SWE2710- Wordle Project
+    Names: Ethan Houseworth, Kadie Degner, Alton Wimer, and Ryan Malvey
+    Class Section: 121
+    Fall 2023
+*/
+
+body {
+  font-family: "Franklin Gothic Book", sans-serif;
+  background-color: white;
+  color: black;
+  text-align: center;
+  user-select: none;
+}
+
+h1 {
+  font-family: "Franklin Gothic Medium", sans-serif;
+  font-size: 35px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#nav {
+  display: grid;
+  grid-template-columns: 0.75fr 0.75fr 15fr 1.5fr;
+  align-content: center;
+  text-align: center;
+  margin: none;
+}
+
+.navIcon {
+  cursor: pointer;
+  font-size: 25px;
+  margin-top: 5px;
+}
+
+#timer {
+font-size: 30px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px 50px;
+  grid-gap: 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+.grid-item {
+  font-family: "Franklin Gothic Medium", sans-serif;
+  border: solid black 3px;
+  width: 50px;
+  aspect-ratio: 1;
+  font-size: 35px;
+  background-color: white;
+  border-color: #a4a4a4;
+  border-radius: 5px;
+  text-align: center; 
+}
+
+.green {
+  position: relative;
+  animation: flip 1s linear 0.5s, toGreen forwards 1.5s;
+}
+
+.yellow {
+  position: relative;
+  animation: flip 1s linear 0.5s, toYellow forwards 1.5s;
+}
+
+.gray {
+  position: relative;
+  animation: flip 1s linear 0.5s, toGray forwards 1.5s;
+}
+
+@keyframes flip {
+  0% {transform: rotateX(0deg);}
+  50% {transform: rotateX(-90deg);}
+  100% {transform: rotateX(0deg)}
+}
+
+@keyframes toGreen {
+  50% {background-color:white; color: black; border-color: #a4a4a4;}
+  100% {background-color: #6ca965; color: white; border-color: #6ca965;}
+}
+
+@keyframes toYellow {
+  50% {background-color:white; color: black; border-color: #a4a4a4;}
+  100% {background-color: #c8b653; color: white; border-color: #c8b653;}
+}
+
+@keyframes toGray {
+  50% {background-color:white; color: black; border-color: #a4a4a4;}
+  100% {background-color: #787c7f; color: white; border-color: #787c7f;}
+}
+
+.hover {
+  animation: shake 0.25s;
+}
+
+@keyframes shake {
+  0% {transform: translate(5px);}
+  25% {transform: translate(-10px);}
+  50% {transform: translate(10px);}
+  75% {transform: translate(-10px);}
+  100% {transform: translate(5px);}
+}
+
+/* Keyboard Styles */
+
+.keyTable {
+  display: flex;
+  justify-content: center;
+  border-spacing: 5px;
+}
+
+.key {
+  font-family: "Franklin Gothic Medium", sans-serif;
+  border: solid #e7e7e7 3px;
+  color: black;
+  width: 30px;
+  height: 40px;
+  font-size: 25px;
+  background-color: #e7e7e7;
+  border-radius: 5px;
+  text-align: center;
+  transition: 1.5s;
+}
+
+#hintButton {
+  display: none;
+  margin: 10px;
+  width: 75px;
+  height: 50px;
+  font-family: "Franklin Gothic Book", sans-serif;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#hintButton:hover {
+  background-color: rgba(10, 10, 10, 0.95);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    transform: translateY(-4px);
+}
+
+.key:hover {
+  cursor: pointer;
+}
+
+#Enter {
+  font-size: 15px;
+  width: 60px
+}
+
+#Backspace {
+  width: 60px;
+}
+
+#backspaceIcon {
+  pointer-events: none
+}
+
+svg {
+  margin-top: 10%;
+  height: 25px;
+}
+
+#keyboardDiv {
+  margin-top: 10px;
+}
+
+/*Keyboard animation*/
+.greenKey {
+  position: relative;
+  animation: toGreenKey forwards 2s;
+}
+
+.yellowKey {
+  position: relative;
+  animation: toYellowKey forwards 2s;
+}
+
+.grayKey {
+  position: relative;
+  animation: toGrayKey forwards 2s;
+}
+
+@keyframes toGreenKey {
+  100% {background-color: #6ca965; color: white; border-color: #6ca965;}
+}
+
+@keyframes toYellowKey {
+  100% {background-color: #c8b653; color: white; border-color: #c8b653;}
+}
+
+@keyframes toGrayKey {
+  100% {background-color: #787c7f; color: white; border-color: #787c7f;}
+}
+
+/*Menu style buttons*/
+.menuButtons {
+  margin: 10px;
+  width: 150px;
+  height: 50px;
+  font-family: "Franklin Gothic Book", sans-serif;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.menuButtons:hover {
+  background-color: rgba(10, 10, 10, 0.95);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  transform: translateY(-4px);
+}
+
+/*End of game popup menu*/
+#endMenu {
+  display: none;
+  position: absolute;
+  bottom: 3.5%;
+  left: 23%;
+  right: 23%;
+  top: 3.5%;
+  border: 3px solid #f1f1f1;
+  background-color: white;
+  z-index: 999;
+}
+  
+#endMenuClose {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  font-size: 30px;
+}
+  
+#endMenuClose:hover {
+  opacity: 1;
+  cursor: pointer;
+  color: #757575;
+}
+
+#endMenu table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#endMenu #guessDistribution {
+  font-size: x-large;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+progress {
+  width: 200px;
+  height: 20px;
+  border-style:  solid;
+  border-width: 1px;
+  background-color: green;
+}
+
+.endGameButton {
+  margin: 20px;
+  margin-top: 30px;
+  width: 150px;
+  height: 50px;
+  font-family: "Franklin Gothic Medium", sans-serif;
+  font-size: 20px;
+  border-radius: 10px;
+  border: #757575 1px solid;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.endGameButton:hover {
+  background-color: rgba(10, 10, 10, 0.95);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+#correctWord {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-spacing: 5px;  
+}
+
+.correctWordLetter {
+  font-family: "Franklin Gothic Medium", sans-serif;
+  border: solid 3px;
+  width: 50px;
+  height: 50px;
+  font-size: 35px;
+  background-color: white;
+  color: black;
+  border-color: #a4a4a4;
+  border-radius: 5px;
+  text-align: center;   
+}
+
+/* Timed mode */
+
+#timerSelection {
+  display: none;
+  position: absolute;
+  bottom: 20%;
+  left: 23%;
+  right: 23%;
+  top: 20%;
+  border: 3px solid #f1f1f1;
+  background-color: white;
+  z-index: 998;
+}
+
+#timerSelectionDiv {
+  padding: 20px;
+}
+
+#timerTable {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#customTimeInput {
+  width: 140px;
+  height: 25px;
+  border: black;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* How to play popup styles */
+    
+#howToPlayContainer {
+  display: none;
+  position: absolute;
+  bottom: 3.5%;
+  left: 23%;
+  right: 23%;
+  top: 3.5%;
+  border: 3px solid #f1f1f1;
+  background-color: white;
+  z-index: 999;
+}
+  
+#closeButton {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  font-size: 30px;
+}
+  
+#closeButton:hover {
+  opacity: 1;
+  cursor: pointer;
+  color: #757575;
+}
+  
+#howToPlayContainer h1 {
+  font-family: "Franklin Gothic Medium", sans-serif;
+  text-align: center;
+  font-size: 40px;
+  margin: 10px 0 0 0;
+}
+  
+#howToPlayContainer h2 {
+  font-family: "Franklin Gothic Book", sans-serif;
+  font-size: 20px;
+  text-align: left;
+  padding-left: 35px;
+  margin-top: 12px;
+  margin-bottom: 5px;
+}
+  
+#howToPlayContainer li {
+  font-family: "Franklin Gothic Demi", sans-serif;
+  font-size: 17px;
+  text-align: left;
+  margin-left: 10px;
+  line-height: 35px;
+}
+
+#howToPlayContainer table {
+  border-spacing: 6px;
+  caption-side: bottom;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#howToPlayContainer th {
+  font-family: "Franklin Gothic Medium", sans-serif;
+  border: solid black 3px;
+  width: 50px;
+  height: 50px;
+  font-size: 35px;
+  background-color: white;
+  border-color: #a4a4a4;
+  border-radius: 5px;
+  text-align: center;
+}
+
+caption {
+  font-family: "Franklin Gothic Demi", sans-serif;
+  font-size: 17px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* Hint popup styles */
+
+#hintContainer {
+  display: none;
+  position: absolute;
+  bottom: 35%;
+  left: 75%;
+  right: 5%;
+  top: 25%;
+  border: 3px solid #f1f1f1;
+  background-color: white;
+  z-index: 999;
+  overflow-y: scroll;
+}
+
+#closeHintButton {
+  position: sticky;
+  top: 2px;
+  right: 2px;
+  margin-left: 180px;
+  margin-top: 0;
+  margin-bottom: 0;
+  border: none;
+  box-shadow: none;
+  background-color: white;
+  height: 15px;
+  width: 15px;
+  font-size: 15px;
+}
+
+#closeHintButton:hover {
+  opacity: 1;
+  cursor: pointer;
+  color: #757575;
+}
+
+#hintList li {
+  text-align: left;
+}
+
+#hintContainer h2 {
+  margin-top: 0;
+}
+
+#timerText {
+  margin: 0;
+}

@@ -1,0 +1,171 @@
+<!-- 
+    Class: SWE2710- Wordle Project
+    Names: Ethan Houseworth, Kadie Degner, Alton Wimer, and Ryan Malvey
+    Class Section: 121
+    Fall 2023
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wordle</title>
+
+    <!-- Wordle Favicon -->
+    <link rel="icon" type="image/x-icon" href="../Wordle Game/Images/wordleLogo.png">
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/e2eef047eb.js" crossorigin="anonymous"></script>
+
+    <!-- Popups CSS -->
+    <link rel="stylesheet" href="CSS/popups.css">
+
+    <!-- Classic Stylesheet -->
+    <link rel="stylesheet" href="CSS/classic.css">
+
+    <!-- Current Stylesheet (for themed styles) -->
+    <div id="currentStylesheet"></div>
+
+    <!-- Menu JavaScript -->
+    <script type="module" src="./wordleMenu.js"></script>
+
+    <!-- Game Mode JavaScript -->
+    <script src="./Game Mode JS/christmas.js"></script>
+    <script src="./Game Mode JS/thanksgiving.js"></script>
+    <script src="./Game Mode JS/halloween.js"></script>
+    <script src="./Game Mode JS/rocketLeague.js"></script>
+
+    <!-- Statistics JavaScript -->
+    <script src="../Wordle Statistics/statistics.js"></script>
+</head>
+<body>
+    <div id="appendToTop"></div>
+    
+    <!-- How to play popup menu -->
+    <div id="howToPlayContainer">
+        <h1>How To Play</h1>
+        <h2>Guess the word in 6 tries.</h2>
+        <ul>
+            <li>Each guess must be a valid 5-letter word.</li>
+            <li>The color of the tiles will change to show how close your
+                guess was to the word.</li>
+        </ul>
+        <h2>Examples</h2>
+
+        <table>
+            <caption>
+            <p><span class="bold">O</span> is in the word and in the correct spot.</p>    
+            </caption>
+            <tr>
+                <th class="green">O</th>
+                <th>C</th>
+                <th>E</th>
+                <th>A</th>
+                <th>N</th>
+            </tr>
+            </table>
+
+            <table>
+                <caption>
+                    <p><span class="bold">C</span> is in the word but not in the correct spot.</p>    
+                </caption>
+            <tr>
+                <th>B</th>
+                <th>E</th>
+                <th>A</th>
+                <th class="yellow">C</th>
+                <th>H</th>
+            </tr>
+        </table>
+
+        <table>
+            <caption>
+                <p><span class="bold">A</span> is not in the word.</p>    
+                </caption>
+            <tr>
+                <th>E</th>
+                <th class="gray">A</th>
+                <th>R</th>
+                <th>T</th>
+                <th>H</th>
+            </tr>
+        </table>
+        <button id="closeButton">x</button>
+    </div>
+
+    <!-- Statistics popup menu -->
+    <div id="statisticsContainer">
+        <div id="statsNav">
+            <h1 id="statisticsTitle">Statistics</h1>
+            <i class="fa-solid fa-chart-simple"></i>
+        </div>
+        <div id="gridContainer">
+            <div class="item">
+                <h2>Current Win Streak</h2>
+                <h1 id="currentWinStreak"></h1>
+            </div>
+            <div class="item">
+                <h2>Longest Win Streak</h2>
+                <h1 id="longestWinStreak"></h1>
+            </div>
+            <div class="item">
+                <h2>Win Percentage</h2>
+                <h1 id="winPercentage"></h1>
+            </div>
+            <div class="item">
+                <h2>Total Games Played</h2>
+                <h1 id="totalGamesPlayed"></h1>
+            </div>
+            <div class="item">
+                <h2>Total Games Won</h2>
+                <h1 id="totalGamesWon"></h1>
+            </div>
+            <div class="item">
+                <h2>Total Games Lost</h2>
+                <h1 id="totalGamesLost"></h1>
+            </div>
+            <div class="item">
+                <h2>Average Number Of Guesses</h2>
+                <h1 id="avgNumGuesses"></h1>
+            </div>
+            <div class="item">
+                <h2>Most Commonly Guessed Letter</h2>
+                <h1 id="mostCommonLetter"></h1>
+            </div>
+            <div class="item">
+                <h2>Fastest Game in Classic Mode</h2>
+                <h1 id="fastestGame">-</h1>
+            </div>
+        </div>
+        <button id="closeStatisticsButton">x</button>
+    </div>
+
+    <!-- Title -->
+    <h1 id="modeTitle"></h1>
+    <h1 id="wordle">Wordle</h1>
+
+    <!-- Game modes selector -->
+    <div id="gameModesContainer">
+        <label for="modes" id="gameModeText">Game Mode:</label>
+        <select name="gameMode" id="modesSelector">
+            <option value="classic">Classic</option>
+            <option value="halloween">Halloween</option>
+            <option value="thanksgiving">Thanksgiving</option>
+            <option value="christmas">Christmas</option>
+            <option value="timed">Timed</option>
+            <option value="hard">Hard</option>
+            <option value="evil">Evil</option>
+            <option value="ai">AI</option>
+            <option value="hint">Hint</option>
+            <option value="rocketleague">Rocket League</option>
+        </select>
+    </div>
+
+    <!-- Menu buttons -->
+    <div id="buttonsContainer">
+        <button id="howToPlayButton" class="menuButtons"><div class="buttonContent">How to Play</div></button>
+        <button id="statisticsButton" class="menuButtons" onclick = "window.location.href = '../Wordle Statistics/statistics.html'"><div class="buttonContent">Statistics</div></button>
+        <button id="playButton" class="menuButtons" onclick = "window.location.href = '../Wordle Game/wordleGame.html?selectedOption=' + document.getElementById('modesSelector').value;"><div class="buttonContent">Play</div></button>
+    </div>
+</body>
+</html>

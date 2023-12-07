@@ -1,0 +1,54 @@
+/*
+    Class: SWE2710- Wordle Project
+    Names: Ethan Houseworth, Kadie Degner, Alton Wimer, and Ryan Malvey
+    Class Section: 121
+    Fall 2023
+*/
+
+/* New keyboard color */
+.key {
+    border: solid #8f5e49 3px;
+    background-color: #8f5e49;
+    color: white;
+    transition: none;
+}
+
+/* Turkey with pie */
+#turkey {
+    position: fixed;
+    width: 350px;
+    height: 300px;
+    z-index: -1;
+    bottom: 0px;
+    left: 5%;
+}
+
+/* Turkey with guitar */
+#turkey2 {
+    position: fixed;
+    width: 250px;
+    height: 350px;
+    z-index: -1;
+    bottom: 0px;
+    right: 7%;
+}
+
+/* Top left leaves */
+#leaves {
+    position: fixed;
+    z-index: -1;
+    width: 360px;
+    height: 250px;
+    top: 0;
+    left: 0;   
+}
+
+/* Top right leaves */
+#leaves2 {
+    position: fixed;
+    z-index: -1;
+    width: 360px;
+    height: 250px;
+    top: 0;
+    right: 0;   
+}

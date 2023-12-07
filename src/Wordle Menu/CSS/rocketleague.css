@@ -1,0 +1,94 @@
+/*
+    Class: SWE2710- Wordle Project
+    Names: Ethan Houseworth, Kadie Degner, Alton Wimer, and Ryan Malvey
+    Class Section: 121
+    Fall 2023
+*/
+
+/* Body and title styles */
+
+body {
+    background: url('../Images/rocketLeagueBackground.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+#wordle {
+    text-align: center;
+    font-family: "Franklin Gothic Heavy", sans-serif;
+    font-size: 100px; 
+    line-height: 20px;
+    color: black;
+    margin-top: 25px;
+}
+
+.rocketLeagueLogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 380px;
+    height: 130px;
+    margin-bottom: -160px;
+    margin-top: 60px;  
+}
+
+/* Game mode selector and option styles */
+    
+#modesSelector {
+    height: 40px;
+    width: 150px;
+    font-size: 20px;
+    border-radius: 10px;
+    font-family: "Franklin Gothic Book", sans-serif;
+}
+    
+#gameModesContainer {
+    text-align: center;
+    font-family: "Franklin Gothic Heavy", sans-serif;
+    font-size: 30px;
+    height: 40px;
+    margin: auto;
+    padding: 0px 30px 30px 30px;
+}
+
+#gameModeText {
+    color: block;
+    -webkit-text-stroke: rgb(186, 186, 186) 1px;
+}
+    
+option {
+    font-size: 20px;
+}
+
+
+/* Menu buttons and menu buttons container styles */
+    
+#buttonsContainer {
+    text-align: center;
+}
+    
+.menuButtons {
+    transform: skewX(-20deg);
+    margin: 10px;
+    width: 200px;
+    height: 40px;
+    font-family: "Franklin Gothic Book", sans-serif;
+    font-size: 20px;
+    border-radius: 10px;
+    border: solid black 2px;
+    box-shadow: 0 8px 15px rgba(36, 36, 36, 0.1);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.buttonContent {
+    transform: skewX(20deg);
+}
+
+.menuButtons:hover {
+    transform: skewX(-20deg);
+    background-color: #c4efff;
+    box-shadow: 3px 3px 3px 3px rgb(16, 107, 151, 0.6);
+    color: rgb(16, 107, 151);
+    border: solid rgb(16, 107, 151) 2px;
+}

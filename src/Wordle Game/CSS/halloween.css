@@ -1,0 +1,191 @@
+/*
+    Class: SWE2710- Wordle Project
+    Names: Ethan Houseworth, Kadie Degner, Alton Wimer, and Ryan Malvey
+    Class Section: 121
+    Fall 2023
+*/
+
+/* New keyboard color */
+.key {
+    border: solid #f68152 3px;
+    background-color: #f68152;
+    transition: none;
+}
+
+/* Spider Styles and animations */
+.spiderweb {
+    background: grey;
+    width: 2px;
+    height: 200px;
+    margin-left: 49px;
+}
+
+.spider {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    left: 15%;
+    animation: swing 3s infinite;
+    transform-origin: top;
+}
+  
+  /* Spider Body */
+.spider .body {
+    width: 100px;
+    height: 80px;
+    background: black;
+    position: relative;
+    border-radius: 50%;
+}
+
+/* Spider's eyes */
+.spider .body .eye {
+    width: 33px;
+    height: 33px;
+    background: white;
+    position: absolute;
+    bottom: 20px;
+    border-radius: 50%;
+}
+
+/* Right eye */
+.spider .eye.right {
+    right: 15px;
+}
+
+/* Left eye */
+.spider .eye.left {
+    left: 15px;
+}
+
+/* Pupils */
+.spider .eye::after {
+    background-color: black;
+    width: 7px;
+    height: 7px;
+    content: '';
+    display: block;
+    margin: 55%;
+    border-radius: 50%;
+    animation: look 8s infinite;
+}
+
+/* Spider's legs */
+.spider .legs {
+    position: absolute;
+    bottom: -10%;
+    z-index: -1;
+}
+
+.spider .legs .leg {
+    width: 80px;
+    height: 40px;
+    margin-top: -30px;
+    border: 5px solid transparent;
+    border-top-color: black;
+    border-radius: 40px 40px 0 0;
+}
+
+/* All left legs */
+.spider .legs.left {
+    left: -60%;  
+}
+/* All right legs */
+.spider .legs.right {
+    right: -60%;
+}
+
+/* Top left leg */
+.legs.left .leg:nth-child(1) {
+    transform: rotate(30deg);
+    margin-left: 0px;
+}
+
+  /* Top right leg */
+.legs.right .leg:nth-child(1) {
+    transform: rotate(-30deg);
+    margin-left: 0px;
+}
+
+/* Second left leg */
+.legs.left .leg:nth-child(2) {
+    transform: rotate(20deg);
+    margin-left: 5px;
+}
+
+/* Second right leg */
+.legs.right .leg:nth-child(2) {
+    transform: rotate(-20deg);
+    margin-left: -5px;
+}
+
+/* Third left leg */
+.legs.left .leg:nth-child(3) {
+    transform: rotate(0deg);
+    margin-left: 10px;
+}
+
+/* Third right leg */
+.legs.right .leg:nth-child(3) {
+    transform: rotate(0deg);
+    margin-left: -10px;
+}
+
+/* Bottom left leg */
+  .legs.left .leg:nth-child(4) {
+    transform: rotate(-20deg);
+    margin-left: 20px;
+}
+
+/* Bottom right leg */
+.legs.right .leg:nth-child(4) {
+    transform: rotate(20deg);
+    margin-left: -20px;
+}
+  
+/* Moves the spider's eyes back and forth */
+@keyframes look {
+    10%, 40%, 100% {
+      transform: translateX(0);
+    }
+    45%, 95% {
+      transform: translateX(-110%);
+    }
+}
+  
+/* Moves the spider up 20px and back down to give a swing effect */
+@keyframes swing {
+    0%, 100% {
+      transform: translateY(0);
+    }
+  
+    50% {
+      transform: translateY(-20px);
+    }
+}
+  
+/* Moves the spider off the screen and back on to the screen at the end of the animation */
+@keyframes up {
+    10%, 90% {
+      transform: translateY(-120%);
+    } 
+    
+    100% {
+      transform: translateY(0);
+    }
+}
+  
+/* Class to animate the spider off the screen */
+.animation-spiderUp {
+    animation: up 4s linear;
+}
+  
+/* Aligns the spider web image on the bottom right */
+#web {
+  position: fixed;
+  width: 450px;
+  height: 500px;
+  z-index: -1;
+  bottom: 0px;
+  right: 0px;
+}
